@@ -13,7 +13,3 @@ Suggested NODE version: 20.9.0
    - `cd backend` -> `npm run mock-server` (served on PORT: 3000)
    - `cd frontend` -> `npm install` -> `npm run dev`(served on PORT: 5173)
 4. Enjoy!
-
-## Final notes
-
-In the timeframe of 5 hours I was able to write a complete logic for the task and create a fully responsive layout, covering all the requirements, however I didn't manage to finish the `<Trip />` static page layout.
