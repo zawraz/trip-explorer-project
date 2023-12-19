@@ -12,22 +12,21 @@ export default function Dashboard() {
 
 	const fetchBatch = (iteration: number, batchSize: number = 9): void => {
 		const newTrips = allTrips?.slice(
-			iteration * batchSize,
-			(iteration + 1) * batchSize
+			(iteration - 1) * batchSize,
+			iteration * batchSize
 		)
-
 		isCalled.current && setDisplayedTrips([...displayedTrips, ...newTrips])
 		isCalled.current = false
 	}
 
-	const onScroll = (): void => {
+	const handleUpdate = (): void => {
 		isCalled.current = true
 		const scrollTop = document.documentElement.scrollTop
 		const scrollHeight = document.documentElement.scrollHeight
 		const clientHeight = document.documentElement.clientHeight
 
-		if (scrollTop + clientHeight >= scrollHeight) {
-			setIteration(iteration + 1)
+		if (scrollTop + clientHeight + 5 >= scrollHeight) {
+			setIteration((prev) => prev + 1)
 		}
 	}
 
@@ -38,8 +37,11 @@ export default function Dashboard() {
 	}, [allTrips, iteration])
 
 	useEffect(() => {
-		window.addEventListener("scroll", onScroll)
-		return () => window.removeEventListener("scroll", onScroll)
+		handleUpdate()
+		window.addEventListener("scroll", handleUpdate)
+		return () => {
+			window.removeEventListener("scroll", handleUpdate)
+		}
 	}, [displayedTrips])
 
 	return (
