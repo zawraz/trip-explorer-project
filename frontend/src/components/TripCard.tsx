@@ -47,7 +47,6 @@ export default function TripCard({
 						{title}
 					</Heading>
 					<Text fontSize={{ base: "smaller", lg: "sm" }}>
-						{/* TODO: handle singular/plural cases */}
 						{countries.length} Countries, {days} Days
 					</Text>
 				</Box>
@@ -78,7 +77,6 @@ export default function TripCard({
 				>
 					<Text>Trip rating</Text>
 					<Flex alignItems={"center"} gap={1}>
-						{/* TODO: implement a rating handler function instead of the placeholder stars */}
 						<StarIcon color={"gold"} />
 						<StarIcon color={"gold"} />
 						<StarIcon color={"gold"} />
